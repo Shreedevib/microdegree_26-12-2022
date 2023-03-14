@@ -4,3 +4,5 @@ echo "My name is Shreedevi"
 ech "Hello my word"
 hi anand
 git commit -m 
+git add .
+git 
