@@ -1,6 +1,6 @@
 #!/bin/bash
-
-if [[ $# -gt 0 ]]; then
+set -x
+if [ $# -gt 0 ]; then
     users=$@
     for users in ${users[@]}; do
         EXISTING_USER=$(cat /etc/passwd | grep -i -w $USER | cut -d ":" -f1)
