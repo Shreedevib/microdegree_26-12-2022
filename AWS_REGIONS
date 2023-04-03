@@ -1,0 +1,19 @@
+#!/bin/bash
+AWS_REGIONS=(us-east-1 us-east-2 us-west-1 us-west-2)
+echo $AWS_REGIONS #incorrect way
+echo ${AWS_REGIONS[@]} #print items in the array
+echo ${AWS_REGIONS[*]} #print items in the array
+echo ${AWS_REGIONS[*]:0} #print items in the array
+echo ${AWS_REGIONS[@]:0} #print items in the array
+
+echo ${AWS_REGIONS[@]} # #print items in count
+
+echo ${AWS_REGIONS[0]} #us-east-1
+echo ${AWS_REGIONS[1]} #us-east-2
+echo ${AWS_REGIONS[2]} #us-west-1
+echo ${AWS_REGIONS[3]} #us-west-2
+for REGION in ${AWS_REGIONS[@]}; do
+    echo " Lets Get VPC ID for $REGION "
+    aws ec2 describe-vpcs --region $REGION | jq ".Vpcs[].VpcId" | tr -d '"'
+    sleep 1
+done
